@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+require('laravel-mix-purgecss');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -15,4 +15,8 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
-    ]);
+    ]).purgeCss({
+        enabled: mix.inProduction(),
+        folders: ['resources'],
+        extensions: ['html', 'js', 'php', 'vue'],
+    });

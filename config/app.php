@@ -122,6 +122,15 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+    /*
+    |--------------------------------------------------------------------------
+    | Redmine Config
+    |--------------------------------------------------------------------------
+    */
+
+    'redmine_url' => env('REDMINE_URL'),
+
+    'redmine_api' => env('REDMINE_API'),
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +185,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        App\Providers\RepositoryServiceProvider::class,
 
     ],
 

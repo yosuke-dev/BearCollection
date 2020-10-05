@@ -18,6 +18,13 @@
                                 Dashboard
                             </jet-nav-link>
                         </div>
+
+                        <!-- Navigation Links -->
+                        <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <jet-nav-link href="/projects/index" :active="$page.currentRouteName == 'projects.index'">
+                                Projects
+                            </jet-nav-link>
+                        </div>
                     </div>
 
                     <!-- Settings Dropdown -->
@@ -110,6 +117,11 @@
                 <div class="pt-2 pb-3 space-y-1">
                     <jet-responsive-nav-link href="/dashboard" :active="$page.currentRouteName == 'dashboard'">
                         Dashboard
+                    </jet-responsive-nav-link>
+                </div>
+                <div class="pt-2 pb-3 space-y-1">
+                    <jet-responsive-nav-link href="/projects/index" :active="$page.currentRouteName == 'projects.index'">
+                        Projects
                     </jet-responsive-nav-link>
                 </div>
 
