@@ -16,6 +16,15 @@
                     textAttribute="name"
                 ></t-rich-select>
             </div>
+            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+                <t-rich-select
+                    placeholder="please select"
+                    :options=project_versions
+                    v-model=selected_version
+                    valueAttribute="id"
+                    textAttribute="name"
+                ></t-rich-select>
+            </div>
         </div>
     </app-layout>
 </template>
@@ -30,7 +39,16 @@
         data() {
             return {
                 headers: ["Id", "Name", "Identifier"],
-                selected_project: undefined
+                selected_project: undefined,
+                selected_version: undefined
+            }
+        },computed: {
+            project_versions: function () {
+                return this.versions.filter(x => x.project_id === this.selected_project)
+            }
+        },watch: {
+            selected_project: function(val){
+                this.selected_version = undefined;
             }
         },
     }

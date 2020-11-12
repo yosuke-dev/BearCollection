@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\IntegrationService;
+use App\Models\Milestone;
+use App\Models\Project;
+use App\Models\EarnedSchedule;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +17,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create();
+        IntegrationService::factory()->create([
+            'name' => 'Backlog',
+        ]);
+
+        IntegrationService::factory()->create([
+            'name' => 'Jira',
+        ]);
+
+        IntegrationService::factory()->create([
+            'name' => 'Redmine',
+        ]);
     }
 }

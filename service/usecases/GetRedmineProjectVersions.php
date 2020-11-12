@@ -19,9 +19,9 @@ class GetRedmineProjectVersions
     {
         $projects = $this->projectRepository->all();
         $versions = array();
-        // foreach ($projects as $project) {
-        //     array_push($versions, $this->versionRepository->getByProjectId($project["id"]));
-        // }
+        foreach ($projects as $project) {
+            $versions = array_merge($versions, $this->versionRepository->getByProjectId($project["id"]));
+        }
         return ['projects' => $projects, 'versions' => $versions];
     }
 }

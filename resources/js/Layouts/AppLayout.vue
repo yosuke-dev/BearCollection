@@ -21,8 +21,15 @@
 
                         <!-- Navigation Links -->
                         <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <jet-nav-link href="/projects/index" :active="$page.currentRouteName == 'projects.index'">
-                                Projects
+                            <jet-nav-link href="/earnedschedule/index" :active="$page.currentRouteName == 'earnedschedule.index'">
+                                EarnedSchedule
+                            </jet-nav-link>
+                        </div>
+
+                        <!-- Navigation Links -->
+                        <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <jet-nav-link href="/integrationsettings/index" :active="$page.currentRouteName == 'integrationsettings.index'">
+                                IntegrationSettings
                             </jet-nav-link>
                         </div>
                     </div>
@@ -76,7 +83,7 @@
                                         </div>
 
                                         <template v-for="team in $page.user.all_teams">
-                                            <form @submit.prevent="switchToTeam(team)">
+                                            <form @submit.prevent="switchToTeam(team)" :key="team.id">
                                                 <jet-dropdown-link as="button">
                                                     <div class="flex items-center">
                                                         <svg v-if="team.id == $page.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -120,8 +127,13 @@
                     </jet-responsive-nav-link>
                 </div>
                 <div class="pt-2 pb-3 space-y-1">
-                    <jet-responsive-nav-link href="/projects/index" :active="$page.currentRouteName == 'projects.index'">
-                        Projects
+                    <jet-responsive-nav-link href="/earnedschedule/index" :active="$page.currentRouteName == 'earnedschedule.index'">
+                        EarnedSchedule
+                    </jet-responsive-nav-link>
+                </div>
+                <div class="pt-2 pb-3 space-y-1">
+                    <jet-responsive-nav-link href="/integrationsettings/index" :active="$page.currentRouteName == 'integrationsettings.index'">
+                        IntegrationSettings
                     </jet-responsive-nav-link>
                 </div>
 
