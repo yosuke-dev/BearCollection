@@ -43,7 +43,7 @@ class ReCreateEarnedScheduleCost
         $this->earnedScheduleRepository->destroyByMilestoneId($this->milestone->id);
 
         $min_date = new Carbon(min(array_merge(array_column($time_entries, 'spent_on'), array_column($issues, 'start_date'))), 'Asia/Tokyo');
-        $max_date = new Carbon(max(array_merge(array_column($time_entries, 'spent_on'), array_column($issues, 'closed_on'))), 'Asia/Tokyo');
+        $max_date = new Carbon(max(array_merge(array_column($time_entries, 'spent_on'), array_column($issues, 'closed_on'), array_column($issues, 'due_date'))), 'Asia/Tokyo');
         $max_date->hour = 0;
         $max_date->minute = 0;
         $max_date->second = 0;

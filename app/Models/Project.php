@@ -27,7 +27,9 @@ class Project extends Model
         parent::boot();
 
         static::deleting(function($project) {
-            $project->milestones()->delete();
+            foreach ($project->milestones()->get() as $milestone) {
+                $milestone->delete();
+            };
         });
     }
 }

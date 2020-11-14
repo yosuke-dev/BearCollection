@@ -23,11 +23,20 @@ class Milestone extends Model
         return $this->belongsTo('App\Models\Project');
     }
 
+    public function earnedSchedules()
+    {
+        return $this->hasMany('App\Models\EarnedSchedule');
+    }
+
     public static function boot() {
         parent::boot();
 
         static::deleting(function($milestone) {
             $milestone->redmineMilestone()->delete();
+            
+            foreach ($milestone->earnedSchedules()->get() as $earned_schedule) {
+                $earned_schedule->delete();
+            };
         });
     }
 }

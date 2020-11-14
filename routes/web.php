@@ -30,7 +30,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return Inertia\Inertia::render('Projects/Index');
 // })->name('projects/index');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/earnedschedule/index', [EarnedScheduleController::class, 'index'])->name('earnedschedule/index');
+Route::middleware(['auth:sanctum', 'verified'])->get('/earnedschedule/index', [EarnedScheduleController::class, 'index'])->name('earnedschedule.index');
 Route::middleware(['auth:sanctum', 'verified'])->get('/earnedschedulecost/{milestone_id}', [EarnedScheduleCostController::class, 'index'])->name('earnedschedulecost.index');
 Route::middleware(['auth:sanctum', 'verified'])->put('/earnedschedulecost/{milestone_id}', [EarnedScheduleCostController::class, 'update'])->name('earnedschedulecost.put');
 

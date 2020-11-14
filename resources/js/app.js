@@ -100,7 +100,7 @@ const settings = {
         fixedClasses: {
             wrapper: 'relative',
             buttonWrapper: 'inline-block relative w-full',
-            selectButton: 'w-full flex text-left justify-between items-center disabled:opacity-50',
+            selectButton: 'w-full flex text-left justify-between items-center disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-400',
             selectButtonLabel: 'block truncate',
             selectButtonPlaceholder: 'block truncate',
             selectButtonIcon: 'fill-current flex-shrink-0 ml-1 h-4 w-4',
