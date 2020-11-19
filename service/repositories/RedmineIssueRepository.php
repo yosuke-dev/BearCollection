@@ -8,7 +8,7 @@ class RedmineIssueRepository extends RedmineBaseRepository
         parent::__construct($url, $api_key);
     }
 
-    public function getByVersionId($version_id)
+    public function getByVersionIdInJournals($version_id)
     {
         $offset = 0;
         $limit = 100;
@@ -47,6 +47,44 @@ class RedmineIssueRepository extends RedmineBaseRepository
             $add_row['closed_on'] = $issue['closed_on'];
             $add_row['estimated_hours'] = $issue['estimated_hours'];
             $add_row['journals'] = isset($issue['journals']) ? array_reverse($issue['journals']) : null;
+
+            $issues[] = $add_row;
+        }
+
+        return $issues;
+    }
+
+    public function getByVersionId($version_id)
+    {
+        $offset = 0;
+        $limit = 100;
+        $params = ['limit' => 1, 'offset' => $offset, 'fixed_version_id' => $version_id, 'status_id' => '*', 'sort' => 'start_date'];
+        $response = $this->client->issue->all($params);
+
+        if($response == null) return;
+
+        $params['limit'] = $limit;
+
+        $result = [];
+        for ($i = 0, $size = $response["total_count"]; $i < $size; $i += $limit) {
+            $params['offset'] = $i;
+            $result = array_merge_recursive($result, $this->client->issue->all($params)['issues']);
+        }
+
+        $issues = [];
+
+        foreach ($result as $key => $issue) {
+            $add_row = [];
+            $add_row['id'] = $issue['id'];
+            $add_row['parent_id'] = isset($issue['parent']) ? $issue['parent']['id'] : null;
+            $add_row['subject'] = $issue['subject'];
+            $add_row['status'] = isset($issue['status']) ? $issue['status']['name'] : null;
+            $add_row['assigned_to'] = isset($issue['assigned_to']) ? $issue['assigned_to']['name'] : null;
+            $add_row['tracker'] = isset($issue['tracker']) ? $issue['tracker']['name'] : null;
+            $add_row['start_date'] = $issue['start_date'];
+            $add_row['due_date'] = $issue['due_date'];
+            $add_row['closed_on'] = $issue['closed_on'];
+            $add_row['done_ratio'] = $issue['done_ratio'];
 
             $issues[] = $add_row;
         }

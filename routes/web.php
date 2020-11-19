@@ -6,6 +6,7 @@ use App\Http\Controllers\EarnedScheduleCostController;
 use App\Http\Controllers\IntegrationServiceController;
 use App\Http\Controllers\IntegrationSettingController;
 use App\Http\Controllers\IntegrationRedmineSettingController;
+use App\Http\Controllers\GanttMilestoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,5 @@ Route::middleware(['auth:sanctum', 'verified'])->delete('/integrationsettings/{i
 Route::middleware(['auth:sanctum', 'verified'])->get('/integrationredminesettings/{id}', [IntegrationRedmineSettingController::class, 'show'])->name('integrationredminesettings.show');
 Route::middleware(['auth:sanctum', 'verified'])->post('/integrationredminesettings', [IntegrationRedmineSettingController::class, 'store'])->name('integrationredminesettings.store');
 Route::middleware(['auth:sanctum', 'verified'])->put('/integrationredminesettings/{id}', [IntegrationRedmineSettingController::class, 'update'])->name('integrationredminesettings.put');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/ganttmilestone/{id}', [GanttMilestoneController::class, 'show'])->name('ganttmilestone.show');

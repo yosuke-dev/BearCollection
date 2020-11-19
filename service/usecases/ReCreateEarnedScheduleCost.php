@@ -33,7 +33,7 @@ class ReCreateEarnedScheduleCost
     public function execute()
     {
         $version_id = $this->redmine_milestoneRepository->getByMilestoneId($this->milestone->id)->original_version_id;
-        $issues = $this->redmine_issueRepository->getByVersionId($version_id);
+        $issues = $this->redmine_issueRepository->getByVersionIdInJournals($version_id);
         $time_entries = [];
         foreach ($issues as $key => $issue) {
             $time_entries_in_issue = $this->redmine_timeEntryRepository->getByIssueId($issue['id']);

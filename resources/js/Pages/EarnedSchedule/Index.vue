@@ -6,8 +6,8 @@
             </h2>
         </template>
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
+            <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4 min-h-screen">
                     <div class="flex flex-wrap">
                         <div class="mx-auto py-4 sm:w-3/5 md:w-2/5 sm:px-2 lg:px-4">
                             <label for="projects" class="block text-gray-700 text-sm font-bold mb-2">Projects</label>
@@ -44,6 +44,9 @@
                             </button>
                         </div>
                         <div class="max-w-7xl mx-auto py-4 sm:px-2 lg:px-8">
+                            <gantt-milestone :milestone_id=selected_milestone v-if="!updating&&is_selected_milestone"></gantt-milestone>
+                        </div>
+                        <div class="max-w-7xl mx-auto py-4 sm:px-2 lg:px-8">
                             <cost-report :milestone_id=selected_milestone v-if="!updating&&is_selected_milestone"></cost-report>
                         </div>
                         <div class="max-w-7xl mx-auto py-4 sm:px-2 lg:px-8">
@@ -68,6 +71,7 @@
     import VarianceReport from './VarianceReport'
     import IndexReport from './IndexReport'
     import CompletionReport from './CompletionReport'
+    import GanttMilestone from './../Gantt/milestone'
     export default {
         components: {
             AppLayout,
@@ -75,6 +79,7 @@
             VarianceReport,
             IndexReport,
             CompletionReport,
+            GanttMilestone,
         },
         props: ['projects', 'milestones'],
         data() {
