@@ -1,6 +1,6 @@
 <template>
-    <div v-if="!disabled">
-        <gantt :tasks="tasks" :options="options" :dynamic-style="dynamicStyle"/>
+    <div class="gantt-style" ref="gantt_wrapper">
+        <gantt :tasks="tasks" :options="options" :dynamic-style="dynamicStyle" v-show="!disabled"/>
     </div>
 </template>
 
@@ -10,23 +10,30 @@ import gantt from '../../Components/gantt.vue';
 
 export default {
     props: {
-        milestone_id: Number,
+        milestone_id: {
+            type : Number,
+            require : true,
+            'default': 0
+        },
     },
     data() {
         return {
-            tasks: [],
+            tasks: [{
+              id: 1,
+              label: '',
+              user:'',
+              start: this.formatDate(new Date(), 'yyyy/MM/dd'),
+              duration: 0,
+              progress: 0,
+              type: 'project',
+            }],
             dynamicStyle: {
               'task-list-header-label': {
                 'font-weight': 'bold'
               }
             },
             options: {
-              maxRows: 100,
-              maxHeight: 600,
-              title: {
-                label: 'aaaaa',
-                html: false,
-              },
+              maxHeight: 0,
               row: {
                 height: 24,
               },
@@ -126,7 +133,8 @@ export default {
                 })
             ).finally(() => (
                 this.tasks = this.response_data,
-                this.disabled = false
+                this.disabled = false,
+                this.handleResize()
             ))
         },
         formatDate: function(date, format) {
@@ -139,6 +147,15 @@ export default {
             format = format.replace(/SSS/g, ('00' + date.getMilliseconds()).slice(-3));
             return format;
         },
+        handleResize(height) {
+            let setHeight = 0;
+            if(height == null){
+                setHeight = this.$refs.gantt_wrapper.clientHeight - 60;
+            }else{
+                setHeight = height - 100;
+            }
+            this.options.maxHeight = setHeight ;
+        }
     },
     mounted() {
         this.fetchData();
@@ -146,7 +163,13 @@ export default {
     watch:{
         milestone_id: function(val){
             this.fetchData();
-        }
+        },
     },
 }
 </script>
+<style scoped>
+.gantt-style {
+    width: 100%;
+    height: 100%;
+}
+</style>

@@ -43,21 +43,20 @@
                                 Report Sync
                             </button>
                         </div>
-                        <div class="max-w-7xl mx-auto py-4 sm:px-2 lg:px-8">
-                            <gantt-milestone :milestone_id=selected_milestone v-if="!updating&&is_selected_milestone"></gantt-milestone>
-                        </div>
-                        <div class="max-w-7xl mx-auto py-4 sm:px-2 lg:px-8">
+                    </div>
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full bg-gray-100 p-4 rounded">
+                        <t-card variant="full">
                             <cost-report :milestone_id=selected_milestone v-if="!updating&&is_selected_milestone"></cost-report>
-                        </div>
-                        <div class="max-w-7xl mx-auto py-4 sm:px-2 lg:px-8">
+                        </t-card>
+                        <t-card variant="full">
                             <variance-report :milestone_id=selected_milestone v-if="!updating&&is_selected_milestone"></variance-report>
-                        </div>
-                        <div class="max-w-7xl mx-auto py-4 sm:px-2 lg:px-8">
+                        </t-card>
+                        <t-card variant="full">
                             <index-report :milestone_id=selected_milestone v-if="!updating&&is_selected_milestone"></index-report>
-                        </div>
-                        <div class="max-w-7xl mx-auto py-4 sm:px-2 lg:px-8">
+                        </t-card>
+                        <t-card variant="full">
                             <completion-report :milestone_id=selected_milestone v-if="!updating&&is_selected_milestone"></completion-report>
-                        </div>
+                        </t-card>
                     </div>
                 </div>
             </div>
@@ -71,7 +70,6 @@
     import VarianceReport from './VarianceReport'
     import IndexReport from './IndexReport'
     import CompletionReport from './CompletionReport'
-    import GanttMilestone from './../Gantt/milestone'
     export default {
         components: {
             AppLayout,
@@ -79,7 +77,6 @@
             VarianceReport,
             IndexReport,
             CompletionReport,
-            GanttMilestone,
         },
         props: ['projects', 'milestones'],
         data() {

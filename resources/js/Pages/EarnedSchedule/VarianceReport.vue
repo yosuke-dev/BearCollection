@@ -1,9 +1,5 @@
 <template>
-    <div>
-        <div>
-            <chart :labels="labels" :datasets="datasets" :title="'EVM VarianceChart'" :height="540" :width="1080" />
-        </div>
-    </div>
+    <chart :labels="labels" :datasets="datasets" :title="'EVM VarianceChart'" />
 </template>
 
 
@@ -12,7 +8,11 @@ import axios from "axios";
 import chart from '../../Components/chart-line.vue';
 export default {
     props: {
-        milestone_id: Number,
+        milestone_id: {
+            type : Number,
+            require : true,
+            'default': 0
+        },
     },
     data() {
         return {

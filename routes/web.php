@@ -23,9 +23,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/show', function () {
+    return Inertia\Inertia::render('Dashboard/show');
+})->name('dashboard.show');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/projects/index', function () {
 //     return Inertia\Inertia::render('Projects/Index');

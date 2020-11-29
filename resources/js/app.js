@@ -8,6 +8,36 @@ import PortalVue from 'portal-vue';
 import VueTailwind from 'vue-tailwind'
 
 const settings = {
+    TCard: {
+        fixedClasses: {
+            wrapper: 'rounded mx-auto shadow bg-white',
+            body: 'p-4',
+            header: 'p-4 border-b',
+            footer: 'p-4 border-t'
+        },
+        classes: {
+            wrapper: 'bg-white',
+            body: '',
+            header: '',
+            footer: ''
+        },
+        variants: {
+            danger: {
+                wrapper: 'bg-red-100 text-red-700',
+                header: 'border-red-200 text-red-700',
+                footer: 'border-red-200 bg-red-100 text-red-700'
+            },
+            clean: {
+                wrapper: 'rounded',
+                footer: 'bg-gray-100 ',
+                body: 'p-4 text-sm text-gray-700'
+            },
+            full: {
+                wrapper: 'h-full w-full',
+                body: 'h-full w-full'
+            }
+        }
+    },
     TTable: {
         classes: {
             table: 'shadow min-w-full divide-y divide-gray-200',
@@ -25,13 +55,13 @@ const settings = {
     TRadio: {
         wrapped: true,
         classes: {
-        label: '',
-        labelChecked: '',
-        wrapper: 'mx-1 bg-white border border-gray-300 flex items-center px-4 py-2 rounded shadow-sm cursor-pointer focus:shadow-outline text-sm text-gray-700 hover:text-gray-500 leading-5 uppercase',
-        wrapperChecked: 'mx-1 bg-gray-100 border border-gray-300 flex items-center px-4 py-2 rounded shadow-inner cursor-pointer focus:shadow-outline text-sm text-gray-700 hover:text-gray-500 leading-5 uppercase',
-        inputWrapper: '',
-        inputWrapperChecked: '',
-        input: 'absolute invisible'
+            label: '',
+            labelChecked: '',
+            wrapper: 'mx-1 bg-white border border-gray-300 flex items-center px-4 py-2 rounded shadow-sm cursor-pointer focus:shadow-outline text-sm text-gray-700 hover:text-gray-500 leading-5 uppercase',
+            wrapperChecked: 'mx-1 bg-gray-100 border border-gray-300 flex items-center px-4 py-2 rounded shadow-inner cursor-pointer focus:shadow-outline text-sm text-gray-700 hover:text-gray-500 leading-5 uppercase',
+            inputWrapper: '',
+            inputWrapperChecked: '',
+            input: 'absolute invisible'
         },
         variants: {
             error: {
