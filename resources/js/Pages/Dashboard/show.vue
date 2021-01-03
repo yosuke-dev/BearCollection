@@ -30,7 +30,7 @@
                 <t-card variant="full">
                     <component
                         :is="item.component"
-                        :milestone_id="item.id"
+                        v-bind="{...item.props}"
                         ref="my_component"
                     >
                     </component>
@@ -66,11 +66,11 @@
                     
                 },
                 layout: [
-                    {"x":0,"y":0,"w":4,"h":8,"i":"0","component":"GanttMilestone","id":2954},
-                    {"x":0,"y":8,"w":1,"h":4,"i":"1","component":"CostReport","id":2954},
-                    {"x":1,"y":8,"w":1,"h":4,"i":"2","component":"VarianceReport","id":2954},
-                    {"x":2,"y":8,"w":1,"h":4,"i":"3","component":"IndexReport","id":2954},
-                    {"x":3,"y":8,"w":1,"h":4,"i":"4","component":"CompletionReport","id":2954}
+                    {"x":0,"y":0,"w":4,"h":8,"i":"0","component":"GanttMilestone","props":{ "milestone_id" :2954}},
+                    {"x":0,"y":8,"w":1,"h":4,"i":"1","component":"CostReport","props":{ "milestone_id" :2954}},
+                    {"x":1,"y":8,"w":1,"h":4,"i":"2","component":"VarianceReport","props":{ "milestone_id" :2954}},
+                    {"x":2,"y":8,"w":1,"h":4,"i":"3","component":"IndexReport","props":{ "milestone_id" :2954}},
+                    {"x":3,"y":8,"w":1,"h":4,"i":"4","component":"CompletionReport","props":{ "milestone_id" :2954}}
                 ],
             }
         },
